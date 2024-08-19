@@ -17,6 +17,7 @@ public class User {
     private String name;
     private String email;
     private String address;
+    private String mobile;
 
     public String getId() {
         return id;
@@ -44,6 +45,14 @@ public class User {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public void setAddress(String address) {
