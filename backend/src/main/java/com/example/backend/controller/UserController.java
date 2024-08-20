@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -27,19 +29,28 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<Map<String, Object>> createUser(@RequestBody User user) {
+        User createdUser = userService.createUser(user);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Added successfully");
+        response.put("user", createdUser);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User userDetails) {
-        return ResponseEntity.ok(userService.updateUser(id, userDetails));
+    public ResponseEntity<Map<String, Object>> updateUser(@PathVariable String id, @RequestBody User userDetails) {
+        User updatedUser = userService.updateUser(id, userDetails);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Updated successfully");
+        response.put("user", updatedUser);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
+    public ResponseEntity<Map<String, String>> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Deleted successfully");
+        return ResponseEntity.ok(response);
     }
-
 }
