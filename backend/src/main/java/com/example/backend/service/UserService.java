@@ -35,21 +35,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    /*
-     public User updateUser(String id, User userDetails) {
-        // Check if the user exists
-        return userRepository.findById(id)
-                .map(user -> {
-                    user.setName(userDetails.getName());
-                    user.setEmail(userDetails.getEmail());
-                    user.setAddress(userDetails.getAddress());
-                    user.setMobile(userDetails.getMobile());  // Assuming mobile field exists in your User model
-                    return userRepository.save(user);
-                })
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
-    }
-     */
-
     public void deleteUser (String id) {
         userRepository.deleteById(id);
     }
