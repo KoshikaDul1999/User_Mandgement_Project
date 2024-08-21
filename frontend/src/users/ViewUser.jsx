@@ -1,6 +1,27 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 export default function ViewUser() {
+
+    const [user,setUser]=useState({
+        name:"",
+        email:"",
+        address:"",
+        mobile:""
+    })
+
+    const {id}=useParams();
+
+    useEffect(()=>{
+        loadUser()
+    },[])
+
+    const loadUser = async () => {
+        const result = await axios.get(`http://localhost:8080/api/users/${id}`)
+        setUser(result.data)
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -8,19 +29,23 @@ export default function ViewUser() {
                     <h2 className="text-center m-4"> User Details </h2>
                     <div className="card">
                         <div className="card-header">
-                            Details of user id :
+                            Details of user id : {user.id}
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
                                     <b> User Name : </b>
+                                        {user.name}
                                 </li>
                                 <li className="list-group-item">
                                     <b> User E-mail : </b>
+                                        {user.email}
                                 </li>
                                 <li className="list-group-item">
                                     <b> User Address : </b>
+                                        {user.address}
                                 </li>
                                 <li className="list-group-item">
                                     <b> User Mobile : </b>
+                                        {user.mobile}
                                 </li>
                             </ul>
                         </div>
