@@ -30,30 +30,59 @@ export default function AddUser() {
             <div className="row">
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
                     <h2 className="text-center m-4">Register User</h2>
+
                     <form onSubmit={(e)=>onSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">
                                 Name
                             </label>
-                            <input type="text" className="form-control" placeholder="enter your name" value={name} onChange={(e)=>onInputChange} />
+                            <input 
+                                type={"text"}
+                                className="form-control" 
+                                placeholder="enter your name" 
+                                name="name"
+                                value={name} 
+                                onChange={(e)=>onInputChange(e)} 
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Email" className="form-label">
                                 E-mail
                             </label>
-                            <input type="text" className="form-control" placeholder="enter your email" />
+                            <input 
+                                type={"text"} 
+                                className="form-control" 
+                                placeholder="enter your email" 
+                                name="email"
+                                value={email} 
+                                onChange={(e)=>onInputChange(e)}
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Address" className="form-label">
                                 Address
                             </label>
-                            <input type="text" className="form-control" placeholder="enter your address" />
+                            <input 
+                                type={"text"} 
+                                className="form-control" 
+                                placeholder="enter your address" 
+                                name="address"
+                                value={address} 
+                                onChange={(e)=>onInputChange(e)}
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Mobile" className="form-label" >
                                 Contact Number
                             </label>
-                            <input type="text" className="form-control" placeholder="enter your mobile number" />
+                            <input 
+                                type={"text"} 
+                                className="form-control" 
+                                placeholder="enter your mobile number"
+                                name="mobile" 
+                                value={mobile} 
+                                onChange={(e)=>onInputChange(e)}
+                            />
                         </div>
                         <button type="submit" className="btn btn-outline-primary">
                             Submit
